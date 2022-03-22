@@ -1,26 +1,31 @@
-# fengmvp
+# baidu-spider
 
-## Project setup
+基于nodejs的百度指数爬虫，爬取所有城市的关键词搜索指数，可以更改搜索关键词，爬取数据后导出为xlsx格式文件
+
+## 安装工作模块
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## cmd运行项目
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+node main
 ```
 
-### Run your tests
-```
-npm run test
-```
+## 配置
 
-### Lints and fixes files
+在setting.json进行项目配置
+
+时间范围需要自行查看是否超过百度指数提供的时间范围，**时间范围必须是1年以上！！！**，因为只做了周标注，而百度指数搜索范围小于一年时是呈现日标注。
+
 ```
-npm run lint
+{
+  "keyword": "金融科技", // 搜索关键词
+  "delayTime": 2000, // 每次请求间隔时间
+  "fileName": "city", // 导出文件名称
+  "fileLocation": "./xlsx" // 导出文件位置
+  "startDate": "2011-01-01", // 时间范围开始
+  "endDate": "2021-01-01" // 时间范围结束
+}
 ```

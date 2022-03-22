@@ -2,5 +2,7 @@
   "keyword": "金融科技",
   "delayTime": 2000,
   "fileName": "city",
-  "fileLocation": "./xlsx"
+  "fileLocation": "./xlsx",
+  "startDate": "2011-01-01",
+  "endDate": "2021-01-01"
 }

@@ -21,6 +21,16 @@ exports.dateOperator = function dateOperator(date, days, operator) {
   return cdate;
 }
 
+/**
+ * 根据日期字符串获取星期几
+ * @param dateString 日期字符串（如：2020-05-02）
+ * @returns {String}
+ */
+ exports.getWeek = function getWeek(dateString) {
+  var dateArray = dateString.split("-")
+  date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2])
+  return date.getDay()
+}
 
 /**
  * 

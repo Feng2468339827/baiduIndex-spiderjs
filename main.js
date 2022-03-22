@@ -2,12 +2,12 @@
  * @Author: feng 
  * @Date: 2022-03-15 16:19:53 
  * @Last Modified by: feng
- * @Last Modified time: 2022-03-22 15:52:20
+ * @Last Modified time: 2022-03-22 16:56:35
  */
 
 let { requestGet } = require('./axios')
 let { provinces, cityShip } = require('./provinces')
-let { dateOperator, decrypt } = require('./common')
+let { dateOperator, decrypt, getWeek } = require('./common')
 var xlsx = require("node-xlsx")
 const fs = require('fs')
 let setting = JSON.parse(fs.readFileSync("./setting.json"))
@@ -36,7 +36,7 @@ let params = JSON.stringify({
 })
 // 获取源码
 async function getList(code, city) {
-  let dataUrl = `https://index.baidu.com/api/SearchApi/index?area=${code}&word=[[${encodeURI(params)}]]&startDate=2011-01-01&endDate=2021-01-01`
+  let dataUrl = `https://index.baidu.com/api/SearchApi/index?area=${code}&word=[[${encodeURI(params)}]]&startDate=${setting.startDate}&endDate=${setting.endDate}`
   let allData = new Promise((resolve, reject) => {
     try {
       requestGet(dataUrl)
@@ -71,7 +71,7 @@ function initExcel(info) {
   let ROW_TIME = []
   ROW_TIME.push('城市')
   // 起始日期
-  let date = "2010-12-27"
+  let date = dateOperator(setting.startDate, getWeek(setting.startDate)-1, "-")
   for (let d of info) {
     // 添加表头，以星期为单位
     let newdate = dateOperator(date, 6, "+")
