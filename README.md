@@ -1,6 +1,10 @@
 # baidu-spider
 
-基于nodejs的百度指数爬虫，爬取所有城市的关键词搜索指数，可以更改搜索关键词，爬取数据后导出为xlsx格式文件
+基于nodejs的百度指数爬虫，爬取**所有城市**的关键词搜索指数，可以更改搜索关键词，爬取数据后导出为xlsx格式文件
+
+目标网站：https://index.baidu.com/v2/main/index.html#/trend/%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80?words=%E9%87%91%E8%9E%8D%E7%A7%91%E6%8A%80
+
+![https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940631%281%29.jpg](https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940631%281%29.jpg)
 
 ## cmd安装工作模块
 
@@ -19,6 +23,8 @@ node main
 
 时间范围需要自行查看是否超过百度指数提供的时间范围，**时间范围必须是1年以上！！！**，因为只做了周标注，而百度指数搜索范围小于一年时是呈现日标注。
 
+暂时不支持对目标城市的爬取，默认爬取**所有城市**的数据
+
 ```
 {
   "keyword": "金融科技", // 搜索关键词
@@ -29,3 +35,15 @@ node main
   "endDate": "2021-01-01" // 时间范围结束
 }
 ```
+
+## 爬取过程
+
+![https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940888%281%29.jpg](https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940888%281%29.jpg)
+
+
+
+## 爬取结果
+
+爬取结果以xlsx文件进行绘制，以周标注数据的时间范围
+
+![https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940917%281%29.jpg](https://feng-common.oss-cn-beijing.aliyuncs.com/static/1647940917%281%29.jpg)
